@@ -8,6 +8,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -47,7 +54,3 @@ app.post("/send-ticket", async (req, res) => {
   }
 });
 
-const PORT = 8000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
